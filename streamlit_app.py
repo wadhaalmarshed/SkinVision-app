@@ -17,22 +17,67 @@ def reprocess_image(image, progress):
 
 # Function to display a styled markdown header
 def header(title, subtitle):
-    st.markdown(f"### {title}")
-    st.markdown(f"<h4 style='color: gray;'>{subtitle}</h4>", unsafe_allow_html=True)
+    st.markdown(f"<h1 style='color: #F27C6A; text-align: center;'>{title}</h1>", unsafe_allow_html=True)
+    st.markdown(f"<h4 style='color: #5C5C5C; text-align: center;'>{subtitle}</h4>", unsafe_allow_html=True)
 
 # Streamlit App with a polished UI
 def main():
-    # App Header with some styling
-    st.set_page_config(page_title="Image Upload & Reprocessing", page_icon=":camera:", layout="wide")
-    header("Image Upload & Reprocessing Dashboard", "Upload an image, reprocess it, and explore the model's results.")
+    # Set page config with custom title, icon, and wide layout
+    st.set_page_config(page_title="SkinVision: Image Upload & Reprocessing", page_icon=":camera:", layout="wide")
+    
+    # Custom CSS styling to enhance the UI
+    st.markdown("""
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F9F9F9;
+            color: #333;
+        }
+        .stButton button {
+            background-color: #F27C6A;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        .stButton button:hover {
+            background-color: #F27C6A;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .stProgress>div {
+            background-color: #F27C6A;
+        }
+        .stAlert {
+            background-color: #F27C6A;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+        .footer a {
+            color: #F27C6A;
+            text-decoration: none;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # Header with the app name
+    header("SkinVision: Image Upload & Reprocessing", "Upload skin images for analysis and reprocessing.")
 
     # Create two columns: one for the image upload and another for the model dashboard
     col1, col2 = st.columns([2, 1])
 
     # Section 1: Image Upload in the first column
     with col1:
-        st.subheader("1. Upload Your Image")
-        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
+        st.subheader("1. Upload Your Skin Image")
+        uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"], help="Upload a skin-related image (e.g., mole, lesion).")
 
         if uploaded_file is not None:
             image = Image.open(uploaded_file)
@@ -40,7 +85,7 @@ def main():
             st.success("Image uploaded successfully!")
 
             # Show reprocess button only after image upload
-            if st.button("Reprocess Image"):
+            if st.button("Reprocess Image :twisted_rightwards_arrows:", key="reprocess"):
                 with st.spinner("Processing..."):
                     # Create the progress bar
                     progress = st.progress(0)
@@ -54,11 +99,16 @@ def main():
                         st.write("Model: Grayscale Conversion (Example)")
                         st.write("Processing Time: ~2 seconds")
                         st.write("This simple model converts the uploaded image to grayscale.")
-                        st.write("More sophisticated models could be used here, such as object detection or image classification.")
+                        st.write("More sophisticated models could be used here, such as lesion detection or skin cancer classification.")
 
-    # Adding a footer to make the app more complete
+    # Adding a footer with some branding and links
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.markdown("<h5 style='text-align: center;'>Built with Streamlit | Made with ❤️</h5>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class="footer">
+            <p>Powered by <a href="https://www.streamlit.io/" target="_blank">Streamlit</a> | Created for SkinVision</p>
+            <p>Find out more about skin health and AI-based analysis on our <a href="https://www.skinvision.com" target="_blank">official website</a>.</p>
+        </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
