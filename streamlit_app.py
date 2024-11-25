@@ -15,9 +15,8 @@ def reprocess_image(image):
 def main():
     st.title("Image Upload & Reprocessing Dashboard")
 
-    image_url = "<a href="https://ibb.co/jTCVKkB"><img src="https://i.ibb.co/qdH0GYX/skinvision-logo.png" alt="skinvision-logo" border="0" /></a>"  # Replace with your image URL
+    image_url = "https://ibb.co/jTCVKkB"  # Replace with your image URL
     st.image(image_url, use_column_width=True)
-
 
     # Section 1: Image Upload
     st.subheader("1. Upload Your Image")
