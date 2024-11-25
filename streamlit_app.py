@@ -1,32 +1,14 @@
 import streamlit as st
 
-# Injecting custom CSS
+# Inject custom CSS to change background color
 st.markdown("""
     <style>
-        /* Change background color to beige */
         body {
-            background-color: #f5f5dc;
-        }
-
-        /* Change font color and size for the title */
-        .streamlit-expanderHeader {
-            font-size: 28px;
-            color: #2a2a2a;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Add padding to all content in Streamlit */
-        .block-container {
-            padding: 20px;
-        }
-
-        /* Style the sidebar */
-        .sidebar .sidebar-content {
-            background-color: #f0f0f0;
+            background-color: #DAC2B1;  /* Light beige color */
         }
     </style>
 """, unsafe_allow_html=True)
 
-# Display some content
-st.title("Streamlit App with Custom CSS")
-st.write("This app uses custom CSS to modify the appearance.")
+# Add content to your app
+st.title("Streamlit App with Custom Background Color")
+st.write("This app has a custom background color of #DAC2B1.")
