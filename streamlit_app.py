@@ -1,12 +1,11 @@
 import streamlit as st
-from PIL import Image
 
-# Title of the app
-st.title("Streamlit Image Display Example")
+# Add title to the app
+st.title("Welcome to My App")
 
-# Load an image (local file)
-image_path = "https://ibb.co/jTCVKkB"
-image = Image.open(image_path)
+# Display an image as soon as the app loads
+image_url = "https://ibb.co/jTCVKkB"  # Replace with your image URL
+st.image(image_url, caption="Your Image Caption", use_column_width=True)
 
-# Display the image in the app
-st.image(image, caption="This is your image", use_column_width=True)
+# Additional app content here
+st.write("This is the content that appears below the image.")
