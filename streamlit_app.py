@@ -74,11 +74,8 @@ def main():
         </style>
     """, unsafe_allow_html=True)
 
-    # Logo upload (Centered)
-    logo_file = st.file_uploader("Upload Logo", type=["jpg", "png", "jpeg"], help="Upload a logo to display at the top of the page.")
-    if logo_file is not None:
-        logo = Image.open(logo_file)
-        st.image(logo, caption="Logo", use_column_width=False, width=200)
+    image_url = "https://ibb.co/jTCVKkB"  # Replace with your image URL
+    st.image(image_url, use_column_width=True)
 
     # Header with the app name
     header("SkinVision: Image Upload & Reprocessing", "Upload skin images for analysis and reprocessing.")
