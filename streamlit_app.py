@@ -3,10 +3,16 @@ from PIL import Image
 import time
 
 # Function to simulate the model processing (e.g., image transformation)
-def reprocess_image(image):
+def reprocess_image(image, progress):
     # Simulate some image processing, e.g., applying filters or resizing
-    time.sleep(2)  # Simulate processing time
+    time.sleep(0.5)  # Simulate a short delay to show progress bar working
     processed_image = image.convert("L")  # Convert the image to grayscale as an example
+
+    # Simulating progress for the image processing
+    for i in range(100):
+        time.sleep(0.05)  # Simulating time taken for each step
+        progress.progress(i + 1)  # Update progress bar
+
     return processed_image
 
 # Function to display a styled markdown header
@@ -36,7 +42,10 @@ def main():
             # Show reprocess button only after image upload
             if st.button("Reprocess Image"):
                 with st.spinner("Processing..."):
-                    processed_image = reprocess_image(image)
+                    # Create the progress bar
+                    progress = st.progress(0)
+                    # Reprocess the image and simulate the progress
+                    processed_image = reprocess_image(image, progress)
                     st.image(processed_image, caption="Processed Image", use_column_width=True)
 
                     # Show model dashboard after reprocessing
