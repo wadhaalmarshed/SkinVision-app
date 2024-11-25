@@ -3,11 +3,11 @@ import streamlit as st
 # Set up the page config (optional, but gives you control over the app's layout)
 st.set_page_config(
     page_title="Your App Title",
-    page_icon="your_logo.png",  # Set your logo for the page icon (favicon)
+    # page_icon="your_logo.png",  # Set your logo for the page icon (favicon)
 )
 
 # Set the logo at the top
-st.image("your_logo.png", width=150)  # Adjust the width of the logo as needed
+# st.image("your_logo.png", width=150)  # Adjust the width of the logo as needed
 
 # Inject custom CSS to change background color to beige
 st.markdown("""
