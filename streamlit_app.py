@@ -78,12 +78,12 @@ def main():
     logo_file = st.file_uploader("Upload Logo", type=["jpg", "png", "jpeg"], label="Upload your logo image", help="Upload a logo to display at the top of the page.")
     if logo_file is not None:
         logo = Image.open(logo_file)
-        st.image(logo, caption="Logo", use_column_width=False, width=200, output_format="PNG", use_cache=False)
+        st.image(logo, caption="Logo", use_column_width=False, width=200)
 
     # Header with the app name
     header("SkinVision: Image Upload & Reprocessing", "Upload skin images for analysis and reprocessing.")
 
-    # Create two columns: one for the image upload and another for the process dashboard
+    # Create columns for image upload and processing dashboard
     col1, col2 = st.columns([2, 1])
 
     # Section 1: Image Upload in the first column
@@ -105,14 +105,14 @@ def main():
                     processed_image = reprocess_image(image, progress)
                     st.image(processed_image, caption="Processed Image", use_column_width=True)
 
-                    # Show model dashboard after reprocessing under the image
+                    # Show model dashboard after reprocessing (under the processed image)
                     st.subheader("2. Model Processing Dashboard")
                     st.write("Model: Grayscale Conversion (Example)")
                     st.write("Processing Time: ~2 seconds")
                     st.write("This simple model converts the uploaded image to grayscale.")
                     st.write("More sophisticated models could be used here, such as lesion detection or skin cancer classification.")
 
-                    # Download processed image button
+                    # Optional: Download button for processed image
                     st.download_button("Download Processed Image", processed_image, file_name="processed_image.jpg", mime="image/jpeg")
 
     # Adding a footer with some branding and links
