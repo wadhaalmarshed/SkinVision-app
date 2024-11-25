@@ -1,23 +1,32 @@
 import streamlit as st
 
-# Set up the page config (optional, but gives you control over the app's layout)
-st.set_page_config(
-    page_title="Your App Title",
-    # page_icon="your_logo.png",  # Set your logo for the page icon (favicon)
-)
-
-# Set the logo at the top
-# st.image("your_logo.png", width=150)  # Adjust the width of the logo as needed
-
-# Inject custom CSS to change background color to beige
+# Injecting custom CSS
 st.markdown("""
     <style>
+        /* Change background color to beige */
         body {
-            background-color: #f5f5dc;  # Beige color
+            background-color: #f5f5dc;
+        }
+
+        /* Change font color and size for the title */
+        .streamlit-expanderHeader {
+            font-size: 28px;
+            color: #2a2a2a;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Add padding to all content in Streamlit */
+        .block-container {
+            padding: 20px;
+        }
+
+        /* Style the sidebar */
+        .sidebar .sidebar-content {
+            background-color: #f0f0f0;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# Your app content goes here
-st.title("Welcome to My Streamlit App")
-st.write("This app has a beige background and a custom logo!")
+# Display some content
+st.title("Streamlit App with Custom CSS")
+st.write("This app uses custom CSS to modify the appearance.")
