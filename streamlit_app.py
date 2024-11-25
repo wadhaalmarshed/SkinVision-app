@@ -10,5 +10,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add content to your app
-st.title("Streamlit App with Custom Background Color")
-st.write("This app has a custom background color of #DAC2B1.")
+
+image_url = "https://ibb.co/jTCVKkB"
+st.image(image_url, caption="logo", width=300)
